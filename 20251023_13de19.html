@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> الوطني للاستثمارات -  قسم خدمات التداول والاستثمار</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* الأساسيات */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary-color: #000000;
+            --secondary-color: #ffffff;
+            --accent-color: #f8f9fa;
+            --text-color: #333333;
+            --gold-color: #d4af37;
+        }
+        
+        body {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* الشريط العلوي */
+        header {
+            background-color: var(--primary-color);
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+        }
+        
+        .logo-text {
+            margin-right: 15px;
+        }
+        
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .logo p {
+            font-size: 0.8rem;
+            color: #cccccc;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--gold-color);
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* قسم البطل */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #cccccc;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 15px 40px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border: 2px solid var(--secondary-color);
+        }
+        
+        .cta-button:hover {
+            background-color: transparent;
+            color: var(--secondary-color);
+        }
+        
+        /* نبذة عن الشركة */
+        .about {
+            padding: 80px 0;
+            background-color: var(--primary-color);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            bottom: 0;
+            right: 50%;
+            transform: translateX(50%);
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* الخدمات */
+        .services {
+            padding: 80px 0;
+            background-color: #111111;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: #1a1a1a;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+        
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .service-card p {
+            color: #cccccc;
+        }
+        
+        /* نموذج التسجيل */
+        .registration {
+            padding: 80px 0;
+            background-color: var(--primary-color);
+        }
+        
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #1a1a1a;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .form-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .form-title h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .form-title p {
+            color: #cccccc;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: #2a2a2a;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            color: var(--secondary-color);
+            font-size: 1rem;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background-color: #e0e0e0;
+        }
+        
+        .disclaimer {
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: #999999;
+            text-align: center;
+        }
+        
+        /* التذييل */
+        footer {
+            background-color: #111111;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary-color);
+            bottom: 0;
+            right: 0;
+        }
+        
+        .footer-column p, .footer-column a {
+            color: #cccccc;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #2a2a2a;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #999999;
+            font-size: 0.9rem;
+        }
+        
+        /* التجاوب مع الشاشات المختلفة */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
+            
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                width: 100%;
+                background-color: var(--primary-color);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .form-container {
+                padding: 30px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                padding: 70px 0;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .service-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- الشريط العلوي -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-text">
+                        <h1>شركة التداول المثالية</h1>
+                        <p>الخبرة في عالم الاستثمار</p>
+                    </div>
+                    <img src="https://pbs.twimg.com/media/Go7eWmmXIAAeUQx.jpg" alt="شعار الشركة">
+                </div>
+                
+                <nav>
+                    <div class="mobile-menu">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                    <ul>
+                        <li><a href="#home">الرئيسية</a></li>
+                        <li><a href="#about">عن الشركة</a></li>
+                        <li><a href="#services">خدماتنا</a></li>
+                        <li><a href="#registration">التسجيل</a></li>
+                        <li><a href="#contact">اتصل بنا</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- قسم البطل -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>استثمر بذكاء، <span style="color: #ffffff;">تاجر بثقة</span></h1>
+                <p>اطلع على فرص السوق العالمية مع خبرائنا. ابدأ رحلتك نحو الحرية المالية اليوم.</p>
+                <a href="#registration" class="cta-button">ابدأ الآن - افتح حسابك المجاني</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- نبذة عن الشركة -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>من نحن: شريكك الموثوق في عالم التداول</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>في <strong>شركة التداول المثالية</strong>، نحن أكثر من مجرد وسيط لتداول العملات والأسهم. نحن شريكك الاستراتيجي في رحلتك نحو بناء الثروة. تأسست شركتنا على مبادئ <strong>الشفافية، الخبرة، والابتكار</strong> لتزويدك بالأدوات والرؤى التي تحتاجها لاتخاذ قرارات استثمارية مستنيرة.</p>
+                    <p>بفضل سنوات من الخبرة في الأسواق المالية وفريق من المحللين المحترفين، نسعى لتمكينك من تحقيق أهدافك المالية في بيئة متقلبة.</p>
+                    <p>نؤمن بأن النجاح في التداول لا يعتمد فقط على الأدوات المتقدمة، بل أيضًا على المعرفة الصحيحة والاستراتيجية المدروسة.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="عن الشركة">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الخدمات -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>خدمات استثمارية مصممة خصيصًا لك</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>تداول العملات (الفوركس)</h3>
+                    <p>تداول بأفضل فروق الأسعار وأدوات تحليل متقدمة في سوق الصرف الأجنبي العالمي.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>تداول الأسهم العالمية</h3>
+                    <p>استثمر في أكبر الشركات العالمية مثل Apple وAmazon وغيرها من الأسهم الرائدة.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-oil-well"></i>
+                    </div>
+                    <h3>تداول المؤشرات والسلع</h3>
+                    <p>تنويع محفظتك من خلال تداول مؤشرات S&P500 والذهب والنفط والسلع الأخرى.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mosque"></i>
+                    </div>
+                    <h3>الحسابات الإسلامية</h3>
+                    <p>حسابات تداول متوافقة مع أحكام الشريعة الإسلامية (خالية من الفائدة).</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>التعليم والتحليل</h3>
+                    <p>ندوات أسبوعية، تحليلات يومية، ودروس تعليمية للمبتدئين والمحترفين.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>إدارة المخاطر</h3>
+                    <p>نصائح واستراتيجيات متقدمة لإدارة المخاطر وحماية استثماراتك.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- نموذج التسجيل -->
+    <section class="registration" id="registration">
+        <div class="container">
+            <div class="form-container">
+                <div class="form-title">
+                    <h2>احصل على حساب تداول حقيقي/تجريبي في دقائق</h2>
+                    <p>انضم إلى آلاف المستثمرين الناجحين. املأ النموذج أدناه وسيتصل بك مستشارنا المالي خلال 24 ساعة لإكمال عملية فتح الحساب وتوجيهك خطوة بخطوة.</p>
+                </div>
+                
+                <form id="registration-form">
+                    <div class="form-group">
+                        <label for="fullname">الاسم الكامل</label>
+                        <input type="text" id="fullname" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">البريد الإلكتروني</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">رقم الهاتف</label>
+                        <input type="tel" id="phone" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="country">الدولة</label>
+                        <select id="country" class="form-control" required>
+                            <option value="">اختر الدولة</option>
+                            <option value="sa">المملكة العربية السعودية</option>
+                            <option value="uae">الإمارات العربية المتحدة</option>
+                            <option value="kw">الكويت</option>
+                            <option value="qa">قطر</option>
+                            <option value="bh">البحرين</option>
+                            <option value="om">عمان</option>
+                            <option value="other">دولة أخرى</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="account-type">نوع الحساب المطلوب</label>
+                        <select id="account-type" class="form-control" required>
+                            <option value="">اختر نوع الحساب</option>
+                            <option value="demo">حساب تجريبي</option>
+                            <option value="real-standard">حساب حقيقي - عادي</option>
+                            <option value="real-islamic">حساب حقيقي - إسلامي</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">ابدء رحلة التداول مع الوطني</button>
+                    
+                    <div class="disclaimer">
+                        بإرسالك للنموذج، فإنك توافق على شروط الخصوصية والسياسة الخاصة بنا
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- التذييل -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>عن الشركة</h3>
+                    <p>شركة التداول المثالية هي وسيط مالي رائد يقدم خدمات التداول والاستثمار في الأسواق المالية العالمية منذ عام 2010.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>روابط سريعة</h3>
+                    <a href="#home">الرئيسية</a>
+                    <a href="#about">عن الشركة</a>
+                    <a href="#services">خدماتنا</a>
+                    <a href="#registration">التسجيل</a>
+                    <a href="#contact">اتصل بنا</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>خدماتنا</h3>
+                    <a href="#">تداول الفوركس</a>
+                    <a href="#">تداول الأسهم</a>
+                    <a href="#">تداول السلع</a>
+                    <a href="#">الحسابات الإسلامية</a>
+                    <a href="#">التحليل والتعليم</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>اتصل بنا</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> العنوان: الرياض، المملكة العربية السعودية</p>
+                    <p><i class="fas fa-phone"></i> الهاتف: +966 12 345 6789</p>
+                    <p><i class="fas fa-envelope"></i> البريد: info@example.com</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>جميع الحقوق محفوظة &copy; 2023 شركة التداول المثالية</p>
+                <p class="disclaimer" style="margin-top: 10px;">
+                    <strong>تحذير المخاطر:</strong> التداول في الأسواق المالية ينطوي على مخاطر عالية قد لا تكون مناسبة لجميع المستثمرين. هناك إمكانية فقدان بعض أو كل رأس المال المستثمر، لذا يجب أن لا تخاطر بأكثر مما تستطيع تحمل خسارته. يرجى التأكد من أنك تفهم تمامًا المخاطر المتضمنة. الأداء السابق لا يعد ضمانًا للنتائج المستقبلية. جميع المحتويات على هذه الصفحة هي لأغراض إعلامية وتعليمية فقط ولا تعد نصيحة مالية.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // القائمة المتنقلة
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('active');
+        });
+        
+        // إغلاق القائمة عند النقر على رابط
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.querySelector('nav ul').classList.remove('active');
+            });
+        });
+        
+        // نموذج التسجيل
+        document.getElementById('registration-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('شكرًا لتسجيلك! سيتصل بك مستشارنا المالي قريبًا.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
